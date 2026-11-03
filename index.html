@@ -377,6 +377,25 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
 .lb .x{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:46px;height:46px;border:1px solid var(--line);font-family:var(--display);font-size:22px;background:var(--bg)}
 .lb p{font-family:var(--display);font-size:22px;letter-spacing:.06em;color:var(--lime);margin-top:12px;text-align:center}
 
+/* text system: one intro style, one body style, one column grid */
+:root{--measure:34ch;--body-measure:46ch}
+.lede,.bio .lede,.day-txt .lede,.about .lede,.studio-txt .lede,.hero-sub .lede{font-family:var(--body);font-weight:300;font-size:clamp(22px,2vw,28px);line-height:1.16;letter-spacing:.04em;color:var(--fg-80);max-width:var(--measure)}
+.bio .lede{color:var(--fg)}
+.day-txt .lede,.about .lede{margin-top:18px}
+.bio p:not(.lede):not(.seal),.pitch-sub,.reel-note p,.award-txt p:not(.big),.cf-txt p:not(.meta),.book p,.pcard p,.why p,.bio .seal{font-family:var(--body);font-weight:300;font-size:20px;line-height:1.4;letter-spacing:.03em;color:var(--fg-80);max-width:var(--body-measure)}
+.why p{max-width:none}
+.bio .seal{color:var(--fg)}
+.bio p + p{margin-top:14px}
+.head,.studio-txt,.about-grid,.pitch{grid-template-columns:minmax(0,1fr) minmax(0,clamp(300px,32vw,460px));gap:40px;align-items:end}
+.about-grid .rules{justify-self:start}
+.h-xl{font-size:clamp(60px,8.8vw,130px)}
+.pitch{align-items:start}
+.head .side,.studio-txt > div:last-child{padding-bottom:10px}
+.pitch-lead{font-size:clamp(24px,2.4vw,34px);line-height:1.12;max-width:30ch}
+.cf-txt .meta,.pcard .meta{max-width:var(--body-measure)}
+.why article{display:flex;flex-direction:column}
+@media (min-width:1101px){.why h3{min-height:2em;display:flex;align-items:flex-end}}
+
 /* responsive */
 @media (max-width:1100px){
   .links{display:none}
@@ -494,7 +513,7 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
     </div>
     <div class="wrap">
       <h1 aria-label="Lau Minez"><span class="row" data-split>LAU</span><span class="row" data-split>MINEZ</span></h1>
-      <div class="hero-sub"><span class="tag">DJ</span><p class="lede" style="max-width:36ch">Energía de festival, precisión de club. Tú pon las ganas: la noche la pone ella.</p></div>
+      <div class="hero-sub"><span class="tag">DJ</span><p class="lede">Energía de festival, precisión de club. Tú pon las ganas: la noche la pone ella.</p></div>
     </div>
     <div class="wrap hero-foot">
       <div class="listen">
