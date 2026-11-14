@@ -475,6 +475,42 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   .fbar{flex-direction:column;align-items:flex-start;gap:6px}
   .fbig{height:300px}
 }
+
+/* 06 galería: arc wheel driven by page scroll (from the Framer arc component) */
+.arc-sec{position:relative;height:calc(100svh + var(--n,9) * 24svh);margin-left:calc(-1*var(--gx));margin-right:calc(-1*var(--gxr))}
+.arc-stick{position:sticky;top:64px;height:calc(100svh - 64px);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.arc-media{position:relative;overflow:hidden;background:var(--ink)}
+.arc-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);filter:grayscale(.35) contrast(1.08);transition:opacity .7s var(--ease),transform 1.4s cubic-bezier(.22,1,.36,1)}
+.arc-media img.on{opacity:1;transform:none}
+.arc-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.55),rgba(8,8,8,0) 30%,rgba(8,8,8,0) 55%,rgba(8,8,8,.85))}
+.arc-head{position:absolute;z-index:2;left:var(--gx);right:var(--gx);bottom:clamp(18px,3vw,36px);pointer-events:none}
+.arc-head .eyebrow{margin-bottom:10px}
+.arc-head h2{font-family:var(--display);font-weight:400;font-size:clamp(72px,10vw,170px);line-height:.8;letter-spacing:-.01em}
+.arc-count{position:absolute;z-index:2;top:22px;left:var(--gx);font-family:var(--display);font-size:22px;letter-spacing:.08em}
+.arc-count b{color:var(--lime);font-weight:400}
+.arc-wheel{position:relative;outline:none}
+.arc-ring{position:absolute;z-index:1;border-radius:50%;border:1px solid var(--line);pointer-events:none;transform:translate(-50%,-50%)}
+.arc-mark{position:absolute;z-index:3;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;border:1px solid var(--lime);display:grid;place-items:center;pointer-events:none}
+.arc-mark::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+.arc-item{position:absolute;z-index:3;left:0;top:0;display:block;text-align:left;white-space:nowrap;transform-origin:0 50%;will-change:transform,opacity;padding:4px 0}
+.arc-item b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(34px,3.4vw,54px);line-height:.9;letter-spacing:.01em;color:var(--fg);transition:color .3s}
+.arc-item small{display:block;font-family:var(--body);font-size:18px;letter-spacing:.04em;color:var(--mute);margin-top:4px}
+.arc-item.on b{color:var(--lime)}
+.arc-item.on small{color:var(--fg-80)}
+.arc-item:hover b{color:var(--lime)}
+.arc-open{position:absolute;z-index:4;width:128px;height:128px;margin:-64px 0 0 -64px;border-radius:50%;border:1px solid var(--line);background:rgba(8,8,8,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-family:var(--display);font-size:18px;letter-spacing:.1em;display:grid;place-items:center;transition:background .3s,border-color .3s,color .3s}
+.arc-open:hover{background:var(--lime);border-color:var(--lime);color:var(--bg)}
+.arc-hint{position:absolute;z-index:3;right:var(--gxr);bottom:18px;color:var(--mute);font-size:17px}
+@media (max-width:760px){
+  .arc-stick{grid-template-columns:1fr}
+  .arc-media{position:absolute;inset:0}
+  .arc-media::after{background:linear-gradient(90deg,rgba(8,8,8,.88),rgba(8,8,8,.55) 70%,rgba(8,8,8,.35)),linear-gradient(180deg,rgba(8,8,8,.4),transparent 30%,rgba(8,8,8,.9))}
+  .arc-count{top:auto;bottom:30px}
+  .arc-item b{font-size:34px}
+  .arc-item small{font-size:16px}
+  .arc-open{width:84px;height:84px;margin:0;left:auto!important;top:auto!important;right:var(--gxr);bottom:22px;font-size:15px}
+  .arc-hint{display:none}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
   .hero h1 .ch{transform:none}
@@ -817,13 +853,42 @@ footer{border-top:2px solid var(--lime)}
         <h2 class="h-xl">Imágenes y<br>momentos<span class="dot"></span></h2>
       </div>
       <div class="side" data-reveal>
-        <p class="lede">Lo que las palabras no cuentan.</p>
+        <p class="lede">Lo que las palabras no cuentan. Baja despacio: cada foto tiene su momento.</p>
       </div>
     </div>
-    <div class="gal" id="gal" data-reveal aria-label="Galería de fotos. Arrastra para moverla.">
-      <div class="gal-track" id="galTrack"><figure class="gi" data-src="media/noche-pista.webp" data-cap="Manos arriba"><img src="media/noche-pista.webp" alt="Lau Minez con los brazos en alto en la cabina, con el público delante" draggable="false"><figcaption><b>01</b> MANOS ARRIBA</figcaption></figure><figure class="gi" data-src="media/dia-gafas.webp" data-cap="Al sol"><img src="media/dia-gafas.webp" alt="Lau Minez sonriendo en la cabina con gafas de sol" draggable="false"><figcaption><b>02</b> AL SOL</figcaption></figure><figure class="gi" data-src="media/noche-points.webp" data-cap="Points"><img src="media/noche-points.webp" alt="Lau Minez pinchando bajo el letrero de Points" draggable="false"><figcaption><b>03</b> POINTS</figcaption></figure><figure class="gi" data-src="media/noche-room.webp" data-cap="Room"><img src="media/noche-room.webp" alt="Lau Minez pinchando en Room The Only Club" draggable="false"><figcaption><b>04</b> ROOM</figcaption></figure><figure class="gi" data-src="media/dia-marina.webp" data-cap="Marina"><img src="media/dia-marina.webp" alt="Lau Minez en Marina Beach Club al atardecer" draggable="false"><figcaption><b>05</b> MARINA</figcaption></figure><figure class="gi" data-src="media/noche-caballo.webp" data-cap="Backstage"><img src="media/noche-caballo.webp" alt="Lau Minez posando junto a un caballo de feria en el club" draggable="false"><figcaption><b>06</b> BACKSTAGE</figcaption></figure><figure class="gi" data-src="media/dia-dona.webp" data-cap="Día de la Dona"><img src="media/dia-dona.webp" alt="Vista desde la cabina del Día de la Dona" draggable="false"><figcaption><b>07</b> DÍA DE LA DONA</figcaption></figure><figure class="gi" data-src="media/noche-valencia.webp" data-cap="València"><img src="media/noche-valencia.webp" alt="Lau Minez de noche en la Ciudad de las Artes y las Ciencias" draggable="false"><figcaption><b>08</b> VALÈNCIA</figcaption></figure><figure class="gi" data-src="media/dia-humo.webp" data-cap="Dona Festival"><img src="media/dia-humo.webp" alt="Humo y público frente al escenario" draggable="false"><figcaption><b>09</b> DONA FESTIVAL</figcaption></figure><figure class="gi" data-src="media/dia-chaqueta.webp" data-cap="De día"><img src="media/dia-chaqueta.webp" alt="Lau Minez pinchando al sol" draggable="false"><figcaption><b>10</b> DE DÍA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-pista.webp" data-cap="Manos arriba"><img src="media/noche-pista.webp" alt="Lau Minez con los brazos en alto en la cabina, con el público delante" draggable="false"><figcaption><b>01</b> MANOS ARRIBA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-gafas.webp" data-cap="Al sol"><img src="media/dia-gafas.webp" alt="Lau Minez sonriendo en la cabina con gafas de sol" draggable="false"><figcaption><b>02</b> AL SOL</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-points.webp" data-cap="Points"><img src="media/noche-points.webp" alt="Lau Minez pinchando bajo el letrero de Points" draggable="false"><figcaption><b>03</b> POINTS</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-room.webp" data-cap="Room"><img src="media/noche-room.webp" alt="Lau Minez pinchando en Room The Only Club" draggable="false"><figcaption><b>04</b> ROOM</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-marina.webp" data-cap="Marina"><img src="media/dia-marina.webp" alt="Lau Minez en Marina Beach Club al atardecer" draggable="false"><figcaption><b>05</b> MARINA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-caballo.webp" data-cap="Backstage"><img src="media/noche-caballo.webp" alt="Lau Minez posando junto a un caballo de feria en el club" draggable="false"><figcaption><b>06</b> BACKSTAGE</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-dona.webp" data-cap="Día de la Dona"><img src="media/dia-dona.webp" alt="Vista desde la cabina del Día de la Dona" draggable="false"><figcaption><b>07</b> DÍA DE LA DONA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-valencia.webp" data-cap="València"><img src="media/noche-valencia.webp" alt="Lau Minez de noche en la Ciudad de las Artes y las Ciencias" draggable="false"><figcaption><b>08</b> VALÈNCIA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-humo.webp" data-cap="Dona Festival"><img src="media/dia-humo.webp" alt="Humo y público frente al escenario" draggable="false"><figcaption><b>09</b> DONA FESTIVAL</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-chaqueta.webp" data-cap="De día"><img src="media/dia-chaqueta.webp" alt="Lau Minez pinchando al sol" draggable="false"><figcaption><b>10</b> DE DÍA</figcaption></figure></div>
+    <div class="arc-sec" id="galArc" style="--n:10">
+    <div class="arc-stick">
+      <div class="arc-media" aria-hidden="true">
+        <img src="media/noche-pista.webp" alt="Lau Minez con los brazos en alto en la cabina, con el público delante" class="on" loading="lazy" draggable="false">
+        <img src="media/dia-gafas.webp" alt="Lau Minez sonriendo en la cabina con gafas de sol" loading="lazy" draggable="false">
+        <img src="media/noche-points.webp" alt="Lau Minez pinchando bajo el letrero de Points" loading="lazy" draggable="false">
+        <img src="media/noche-room.webp" alt="Lau Minez pinchando en Room The Only Club" loading="lazy" draggable="false">
+        <img src="media/noche-caballo.webp" alt="Lau Minez en Marina Beach Club al atardecer" loading="lazy" draggable="false">
+        <img src="media/dia-marina.webp" alt="Lau Minez posando junto a un caballo de feria en el club" loading="lazy" draggable="false">
+        <img src="media/dia-dona.webp" alt="Vista desde la cabina del Día de la Dona" loading="lazy" draggable="false">
+        <img src="media/noche-valencia.webp" alt="Lau Minez de noche en la Ciudad de las Artes y las Ciencias" loading="lazy" draggable="false">
+        <img src="media/dia-humo.webp" alt="Humo y público frente al escenario" loading="lazy" draggable="false">
+        <img src="media/dia-chaqueta.webp" alt="Lau Minez pinchando al sol" loading="lazy" draggable="false">
+      </div>
+      <p class="arc-count" aria-live="polite"><b id="arcNum">01</b> / 10</p>
+      <div class="arc-wheel" id="arcWheel" tabindex="0" aria-label="Galería de fotos. Usa las flechas arriba y abajo.">
+        <span class="arc-ring" id="arcRing1"></span><span class="arc-ring" id="arcRing2"></span>
+        <span class="arc-mark" id="arcMark"></span>
+        <button class="arc-item on" data-i="0" data-cap="Manos arriba"><b>Manos arriba</b><small>Club · de noche</small></button>
+        <button class="arc-item" data-i="1" data-cap="Al sol"><b>Al sol</b><small>En cabina, de día</small></button>
+        <button class="arc-item" data-i="2" data-cap="Points"><b>Points</b><small>Club · València</small></button>
+        <button class="arc-item" data-i="3" data-cap="Room"><b>Room</b><small>The Only Club</small></button>
+        <button class="arc-item" data-i="4" data-cap="Marina"><b>Marina</b><small>Beach club · atardecer</small></button>
+        <button class="arc-item" data-i="5" data-cap="Backstage"><b>Backstage</b><small>Antes de salir</small></button>
+        <button class="arc-item" data-i="6" data-cap="Día de la Dona"><b>Día de la Dona</b><small>Vista desde la cabina</small></button>
+        <button class="arc-item" data-i="7" data-cap="València"><b>València</b><small>Ciudad de las Artes</small></button>
+        <button class="arc-item" data-i="8" data-cap="Dona Festival"><b>Dona Festival</b><small>Humo y escenario</small></button>
+        <button class="arc-item" data-i="9" data-cap="De día"><b>De día</b><small>Open air</small></button>
+        <button class="arc-open" id="arcOpen">Ampliar</button>
+        <p class="arc-hint">Baja para girar la rueda</p>
+      </div>
     </div>
-    <p class="swipe-hint wrap-hint"><span>←</span> Arrastra la galería o toca una foto <span>→</span></p>
+    </div>
   </section>
 
   <!-- 08 SOBRE -->
@@ -1288,6 +1353,72 @@ footer{border-top:2px solid var(--lime)}
       }), {threshold: .5});
       io.observe(c);
     }
+  })();
+
+  // 06 galería: arc wheel, rotated by page scroll
+  (() => {
+    const sec = document.getElementById('galArc'); if (!sec) return;
+    const stick = sec.querySelector('.arc-stick'), wheel = document.getElementById('arcWheel');
+    const items = [...wheel.querySelectorAll('.arc-item')], pics = [...sec.querySelectorAll('.arc-media img')];
+    const n = items.length, num = document.getElementById('arcNum');
+    const r1 = document.getElementById('arcRing1'), r2 = document.getElementById('arcRing2'), mark = document.getElementById('arcMark'), openB = document.getElementById('arcOpen');
+    const mobile = matchMedia('(max-width:760px)');
+    let target = 0, pos = 0, act = -1, geo = {};
+    const measure = () => {
+      const W = wheel.clientWidth, H = wheel.clientHeight;
+      const R = mobile.matches ? Math.min(W * .95, H * .44) : Math.min(W * .56, H * .46);
+      const cx = mobile.matches ? 24 - R * .78 : 0, cy = H / 2;
+      geo = {R, cx, cy, step: mobile.matches ? .2 : .21};
+      const ring = (el, r) => { el.style.width = el.style.height = 2 * r + 'px'; el.style.left = cx + 'px'; el.style.top = cy + 'px'; };
+      ring(r1, R - 18); ring(r2, R * .38);
+      r2.style.display = mobile.matches ? 'none' : '';
+      mark.style.left = (cx + R - 18) + 'px'; mark.style.top = cy + 'px';
+      if (!mobile.matches) { openB.style.left = cx + 'px'; openB.style.top = cy + 'px'; }
+    };
+    const total = () => Math.max(1, sec.offsetHeight - stick.offsetHeight);
+    const onScroll = () => {
+      const p = Math.min(1, Math.max(0, (64 - sec.getBoundingClientRect().top) / total()));
+      target = p * (n - 1);
+    };
+    const render = () => {
+      const {R, cx, cy, step} = geo;
+      items.forEach((el, i) => {
+        const d = i - pos, th = d * step, a = Math.abs(d);
+        const x = cx + R * Math.cos(th) + 10, y = cy + R * Math.sin(th);
+        el.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translateY(-50%) scale(${Math.max(.7, 1 - a * .07).toFixed(3)})`;
+        el.style.opacity = Math.max(0, 1 - a / (mobile.matches ? 3.6 : 4.6)).toFixed(3);
+        el.style.visibility = a > 5 ? 'hidden' : 'visible';
+        el.tabIndex = a < .5 ? 0 : -1;
+      });
+      const k = Math.round(pos);
+      if (k !== act) {
+        act = k;
+        items.forEach((el, i) => el.classList.toggle('on', i === k));
+        pics.forEach((im, i) => im.classList.toggle('on', i === k));
+        num.textContent = String(k + 1).padStart(2, '0');
+      }
+    };
+    const goTo = i => {
+      i = Math.max(0, Math.min(n - 1, i));
+      const top = sec.getBoundingClientRect().top + scrollY - 64 + total() * i / (n - 1);
+      scrollTo({top, behavior: reduce ? 'auto' : 'smooth'});
+    };
+    items.forEach((el, i) => el.addEventListener('click', () => i === act ? big() : goTo(i)));
+    const big = () => { const im = pics[act]; open({dataset:{lb: im.getAttribute('src'), cap: items[act].dataset.cap}, focus(){}}); };
+    openB.addEventListener('click', big);
+    wheel.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); goTo(act + 1); }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); goTo(act - 1); }
+      if (e.key === 'Enter' && e.target === wheel) big();
+    });
+    const loop = () => {
+      pos += (target - pos) * (reduce ? 1 : .14);
+      if (Math.abs(target - pos) < .001) pos = target;
+      render(); requestAnimationFrame(loop);
+    };
+    addEventListener('scroll', onScroll, {passive:true});
+    addEventListener('resize', () => { measure(); onScroll(); });
+    measure(); onScroll(); pos = target; loop();
   })();
 
   // 07 gallery: drifting strip, drag with inertia, skew by speed
