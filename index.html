@@ -1368,7 +1368,7 @@ footer{border-top:2px solid var(--lime)}
       const W = wheel.clientWidth, H = wheel.clientHeight;
       const R = mobile.matches ? Math.min(W * .95, H * .44) : Math.min(W * .56, H * .46);
       const cx = mobile.matches ? 24 - R * .78 : 0, cy = H / 2;
-      geo = {R, cx, cy, step: mobile.matches ? .2 : .21};
+      geo = {R, cx, cy, step: Math.max(mobile.matches ? .2 : .21, 74 / R)};
       const ring = (el, r) => { el.style.width = el.style.height = 2 * r + 'px'; el.style.left = cx + 'px'; el.style.top = cy + 'px'; };
       ring(r1, R - 18); ring(r2, R * .38);
       r2.style.display = mobile.matches ? 'none' : '';
