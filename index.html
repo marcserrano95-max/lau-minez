@@ -121,9 +121,9 @@ section{position:relative}
 .manifesto{display:grid;grid-template-columns:1.15fr 1fr .85fr;gap:clamp(20px,3vw,44px);align-items:start}
 .manifesto .lede{margin-top:clamp(0px,4vw,60px)}
 .portrait{position:relative;aspect-ratio:4/5;overflow:hidden;max-width:100%}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.15) brightness(.9)}
-.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(154,255,71,.0) 30%,rgba(154,255,71,.35));mix-blend-mode:multiply}
-.portrait::before{content:"";position:absolute;right:16%;top:0;bottom:0;width:3px;background:var(--lime);box-shadow:0 0 30px 6px rgba(154,255,71,.55);z-index:1;opacity:.85}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.portrait::after{display:none;content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(154,255,71,.0) 30%,rgba(154,255,71,.35));mix-blend-mode:multiply}
+.portrait::before{display:none;content:"";position:absolute;right:16%;top:0;bottom:0;width:3px;background:var(--lime);box-shadow:0 0 30px 6px rgba(154,255,71,.55);z-index:1;opacity:.85}
 .sig{display:flex;justify-content:space-between;align-items:end;margin-top:28px;gap:20px;flex-wrap:wrap}
 .sig .mini{font-family:var(--display);font-size:20px;letter-spacing:.04em}
 .type{font-family:var(--display);color:var(--lime);font-size:20px;letter-spacing:.06em;line-height:1.05;text-align:right}
@@ -203,7 +203,7 @@ section{position:relative}
 .cf-btn svg{width:16px;height:16px;stroke:var(--fg)}
 .cf-btn:hover{background:var(--lime);border-color:var(--lime)} .cf-btn:hover svg{stroke:var(--bg)}
 .cf-bar{width:140px;height:2px;background:var(--line);position:relative;overflow:hidden}
-.cf-bar i{position:absolute;inset:0 auto 0 0;width:33.3%;background:var(--lime);transition:width .6s var(--ease)}
+.cf-bar i{position:absolute;inset:0 auto 0 0;width:7.7%;background:var(--lime);transition:width .6s var(--ease)}
 
 /* 05 deck */
 .daywrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
@@ -401,7 +401,7 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   .links{display:none}
   .burger{display:block}
   .manifesto{grid-template-columns:1fr 1fr}
-  .manifesto .portrait{grid-row:span 2}
+  .manifesto .portrait-wrap{grid-row:span 2}
   .reels{grid-template-columns:1fr 1fr 1fr}
   .reel-note{grid-template-columns:1fr 1fr}
   .reel-note .btn{grid-column:1/-1;justify-self:start}
@@ -423,7 +423,7 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   .sound{padding:0 12px}
   .head,.manifesto,.about-grid{grid-template-columns:1fr}
   .head{gap:18px}
-  .manifesto .portrait{grid-row:auto;order:-1}
+  .manifesto .portrait-wrap{grid-row:auto;order:-1}
   .sig{flex-direction:column;align-items:flex-start}
   .type{text-align:left}
   .hero-foot{grid-template-columns:1fr}
@@ -480,6 +480,97 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   .hero h1 .ch{transform:none}
   .js [data-reveal].pre{opacity:1;transform:none}
 }
+
+/* cambios Laura nov 2026 */
+.bio-more{display:none}.bio.open .bio-more{display:block}
+.bio-toggle{font-family:var(--ui);font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);background:none;border:1px solid var(--lime);padding:10px 16px 8px;margin:6px 0 18px;cursor:pointer;display:inline-flex;gap:10px}
+.bio.open .bio-toggle span{transform:rotate(45deg)}
+.bio-toggle span{display:inline-block;transition:transform .3s}
+.rules{font-size:clamp(40px,4.4vw,68px)}
+.rules{white-space:nowrap}
+@media (max-width:760px){#carteles .h-xl{font-size:11vw}#premios .h-xl{font-size:9.6vw}.rules{font-size:clamp(34px,10vw,52px)}.book .btn{font-size:17px;white-space:nowrap;padding-left:18px}}
+
+.hero-sub .tag{font-size:clamp(16px,1.6vw,22px);padding:7px 12px 5px}
+.portrait-cap{font-family:var(--display);color:var(--lime);font-size:clamp(20px,1.8vw,26px);line-height:1.05;letter-spacing:.03em;margin-top:14px;text-transform:uppercase}
+.day-more{font-family:var(--body);font-weight:300;font-size:19px;line-height:1.4;color:var(--fg-80);margin-top:14px;max-width:var(--body-measure)}
+.reel .cap > div:empty{display:none}
+.reel .cap{justify-content:flex-end}
+.why h3{font-size:clamp(26px,2.2vw,34px)}
+.why p{font-size:17px}
+.events{display:block;margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--line);padding-top:28px}
+.ev-title{font-family:var(--display);font-size:clamp(34px,3.6vw,52px);line-height:1;margin-bottom:22px;text-transform:uppercase}
+.events ul{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.events li{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border:0;border-left:1px solid var(--line);background:none;padding:12px 10px}
+.events li:first-child{border-left:0}
+.events li svg{width:34px;height:34px;stroke:var(--lime);fill:none;stroke-width:1.5}
+.book .ui-label{display:block;margin-bottom:10px;font-size:14px;letter-spacing:.24em}
+.book .book-r{display:flex;flex-direction:column;gap:18px;align-items:flex-start;max-width:420px}
+.fgrid .soc a{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none}
+.fgrid .soc a:hover{color:var(--lime)}
+.creed .lede{margin-top:16px}
+@media (max-width:760px){
+  .events ul{grid-template-columns:repeat(2,1fr);row-gap:18px}
+  .events li:nth-child(3){border-left:0}
+}
+
+/* final + pie (maqueta Laura) */
+.creed{min-height:min(84vh,720px);align-items:center;padding:clamp(70px,9vw,120px) 0}
+.creed .bg img{filter:grayscale(1) brightness(.6) contrast(1.15);object-position:70% 40%}
+.creed .bg::after{background:linear-gradient(90deg,rgba(8,8,8,.96) 0%,rgba(8,8,8,.75) 40%,rgba(8,8,8,.15) 75%),linear-gradient(180deg,var(--bg),transparent 25%,transparent 70%,var(--bg)),rgba(154,255,71,.28);mix-blend-mode:normal}
+.creed .bg::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 72% 60%,rgba(154,255,71,.35),transparent 70%);mix-blend-mode:screen;z-index:1;pointer-events:none}
+.end-bar,.fb-bar{display:block;width:78px;height:4px;background:var(--lime)}
+.end-kick{font-family:var(--ui);font-weight:500;font-size:clamp(22px,2.4vw,34px);letter-spacing:.32em;margin:26px 0 18px}
+.end-h{font-family:var(--display);font-weight:400;font-size:clamp(56px,7.4vw,112px);line-height:.9;text-transform:uppercase;letter-spacing:.005em}
+.end-sub{font-family:var(--ui);font-weight:300;font-size:clamp(17px,1.6vw,22px);margin-top:18px;color:var(--fg)}
+.creed .btns{margin-top:34px;gap:24px}
+.creed .btn{height:58px;font-size:24px;padding:0 22px 0 34px}
+.btn-line{background:transparent;color:var(--fg);border:2px solid var(--fg);padding:0 40px!important}
+.btn-line:hover{background:var(--fg);color:var(--bg)}
+footer{border-top:2px solid var(--lime)}
+.fcols{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.1fr;padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)}
+.fcols>div{padding:0 clamp(18px,2.4vw,40px)}
+.fcols>.fcol{border-left:2px solid var(--lime)}
+.fcols>.fbrand{padding-left:0}
+.fb-name{font-family:var(--ui);font-weight:500;font-size:clamp(28px,2.8vw,40px);letter-spacing:.32em;white-space:nowrap}
+.fb-sub{font-family:var(--ui);font-size:clamp(14px,1.2vw,18px);letter-spacing:.42em;margin:14px 0 32px;color:var(--fg-80)}
+.fcol h4{font-family:var(--display);font-weight:400;color:var(--lime);font-size:clamp(30px,2.6vw,38px);letter-spacing:.08em;margin-bottom:18px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fnav a{font-family:var(--ui);font-size:18px;color:var(--fg)}
+.fnav a:hover,.fsoc a:hover,.fmore:hover{color:var(--lime)}
+.fsoc a,.fsoc .soon{display:flex;align-items:center;gap:16px;font-family:var(--ui);font-size:18px;color:var(--fg)}
+.fsoc li{margin-bottom:6px}
+.fsoc svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.6;flex:none}
+.fsoc .soon small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);padding:2px 6px}
+.fabout{font-family:var(--ui);font-size:19px;line-height:1.5;color:var(--fg);max-width:24ch}
+.fmore{display:inline-flex;align-items:center;gap:10px;margin:18px 0 26px;font-family:var(--ui);font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-80)}
+.fend{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(440px,52vw,720px);display:grid;place-items:center;border-top:1px solid var(--line)}
+.fend .bg{position:absolute;inset:0;z-index:-2}
+.fend .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 80%;filter:grayscale(1) brightness(.45) contrast(1.2)}
+.fend .bg::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 100%,rgba(154,255,71,.45),transparent 70%),linear-gradient(180deg,var(--bg) 0%,rgba(8,8,8,.55) 40%,rgba(8,8,8,.35) 100%);}
+.fend-ghost{position:absolute;top:8%;left:0;right:0;text-align:center;z-index:-1;font-family:var(--display);font-style:italic;font-size:clamp(120px,22vw,340px);line-height:.85;color:rgba(242,241,237,.22);white-space:nowrap;letter-spacing:.01em}
+.fend-dot{position:absolute;top:7%;right:4%;width:22px;height:22px;border-radius:50%;background:var(--lime);box-shadow:0 0 20px rgba(154,255,71,.7)}
+.fend-box{margin-top:clamp(60px,8vw,120px);background:rgba(8,8,8,.92);border:2px solid var(--lime);padding:clamp(22px,3vw,40px) clamp(24px,5vw,90px);text-align:center;width:min(880px,calc(100% - 32px))}
+.fe-name{display:flex;align-items:center;justify-content:center;gap:clamp(16px,4vw,56px);font-family:var(--ui);font-weight:700;font-size:clamp(16px,2vw,26px);letter-spacing:.42em}
+.fe-name i{display:block;width:clamp(30px,6vw,90px);height:3px;background:var(--lime)}
+.fend-box h5{font-family:var(--ui);font-weight:800;font-size:clamp(40px,6.4vw,90px);line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin:clamp(16px,2vw,26px) 0}
+.fe-meta{display:flex;justify-content:center;align-items:center;gap:clamp(18px,4vw,56px);font-family:var(--ui);font-weight:500;font-size:clamp(11px,1.4vw,18px);letter-spacing:.32em}
+.fe-meta b{display:block;width:2px;height:22px;background:var(--lime)}
+.fend-copy{position:absolute;right:clamp(16px,3vw,48px);bottom:22px;font-family:var(--ui);font-weight:600;font-size:clamp(10px,1vw,14px);letter-spacing:.14em}
+@media (max-width:900px){
+  .fcols{grid-template-columns:1fr 1fr;row-gap:36px}
+  .fcols>.fbrand{grid-column:1/-1}
+  .fcols>.fcol:nth-child(4){border-left:0;padding-left:0;grid-column:1/-1}
+}
+@media (max-width:560px){
+  .fcols{grid-template-columns:1fr}
+  .fcols>.fcol{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px}
+  .fb-name{font-size:26px}
+  .creed .btn{font-size:19px;height:52px}
+  .creed .bg::after{background:linear-gradient(180deg,var(--bg),rgba(8,8,8,.7) 40%,rgba(8,8,8,.85)),rgba(154,255,71,.2)}
+  .fe-meta{flex-direction:column;gap:8px}.fe-meta b{display:none}
+  .fend-copy{left:16px;right:16px;text-align:center}
+  .fend-ghost{top:12%}
+}
 </style>
 </head>
 <body>
@@ -487,7 +578,7 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
 <header class="nav">
   <a href="#top" class="logo" aria-label="Lau Minez, inicio">Lau Minez</a>
   <nav class="links ui-label" aria-label="Principal">
-    <a href="#sesiones">Sesiones</a><a href="#carteles">Carteles</a><a href="#premios">Premios</a><a href="#dedia">De día</a><a href="#estudio">Estudio</a><a href="#galeria">Galería</a>
+    <a href="#sesiones">Sesiones</a><a href="#carteles">Carteles</a><a href="#premios">Premios</a><a href="#dedia">Daytime</a><a href="#galeria">Galería</a>
   </nav>
   <div class="nav-r">
     <a class="btn btn-gray" href="#contacto">Contratar <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a>
@@ -498,7 +589,7 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   </div>
 </header>
 <div class="menu" id="menu">
-  <a class="big" href="#sesiones">Sesiones</a><a class="big" href="#carteles">Carteles</a><a class="big" href="#premios">Premios</a><a class="big" href="#dedia">De día</a><a class="big" href="#estudio">Estudio</a><a class="big" href="#galeria">Galería</a><a class="big" href="#sobre">Sobre</a>
+  <a class="big" href="#sesiones">Sesiones</a><a class="big" href="#carteles">Carteles</a><a class="big" href="#premios">Premios</a><a class="big" href="#dedia">Daytime</a><a class="big" href="#galeria">Galería</a><a class="big" href="#sobre">Sobre</a>
   <a class="btn" style="margin-top:24px;align-self:flex-start" href="#contacto">Contratar <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a>
 </div>
 
@@ -513,7 +604,7 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
     </div>
     <div class="wrap">
       <h1 aria-label="Lau Minez"><span class="row" data-split>LAU</span><span class="row" data-split>MINEZ</span></h1>
-      <div class="hero-sub"><span class="tag">DJ</span><p class="lede">Energía de festival, precisión de club. Tú pon las ganas: la noche la pone ella.</p></div>
+      <div class="hero-sub"><span class="tag">SU ESENCIA. SU SONIDO. SU HISTORIA.</span></div>
     </div>
     <div class="wrap hero-foot">
       <div class="listen">
@@ -523,13 +614,14 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
           <svg class="wave" viewBox="0 0 340 34" preserveAspectRatio="none" aria-hidden="true"><path id="wave" d="M0 17 L340 17"/></svg>
         </div>
       </div>
-      <div class="next"><small>ÚLTIMA FECHA</small>MEDUSA FESTIVAL<br>13 — 17 AGO 2026<br>PLAYA DE CULLERA<br>ESCENARIO APSARAS</div>
     </div>
   </section>
 
   <div class="marq" aria-hidden="true"><div class="trk">
-    <span>Lau Minez</span><span>Euforia</span><span>Manos arriba</span><span>Groove</span><span>Dona Festival</span><span>Points</span><span>Medusa</span><span>Después del anochecer</span>
-    <span>Lau Minez</span><span>Euforia</span><span>Manos arriba</span><span>Groove</span><span>Dona Festival</span><span>Points</span><span>Medusa</span><span>Después del anochecer</span>
+    <span>Lau Minez</span><span>Energía</span><span>Groove</span><span>Fuerza</span><span>Ritmo</span><span>Conexión</span>
+    <span>Lau Minez</span><span>Energía</span><span>Groove</span><span>Fuerza</span><span>Ritmo</span><span>Conexión</span>
+    <span>Lau Minez</span><span>Energía</span><span>Groove</span><span>Fuerza</span><span>Ritmo</span><span>Conexión</span>
+    <span>Lau Minez</span><span>Energía</span><span>Groove</span><span>Fuerza</span><span>Ritmo</span><span>Conexión</span>
   </div></div>
 
   <!-- 01 MANIFIESTO -->
@@ -538,12 +630,21 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
     <div class="manifesto">
       <h2 class="h-xl" data-reveal>Cuando<br>ella sube,<br>la pista<br><span style="white-space:nowrap">responde<span class="dot"></span></span></h2>
       <div class="bio" data-reveal>
-        <p class="lede">Hay DJs que ponen música. Lau Minez lee la pista, la sube poco a poco y no la suelta hasta el último tema.</p>
-        <p>Se mueve con la misma soltura en un club a oscuras que en un escenario al sol. Ha compartido cartel con nombres como Melanie Ribbe y Marien Baker, y ha pinchado en Barraca con Points, en La Marserena de Dénia, en ROOM y en el escenario Apsaras de Medusa Festival.</p>
-        <p>Con Dona Festival recogió el premio de la Gala de Premios Turismo by FOTUR. Y cuando no está en cabina, está en el estudio preparando lo que sonará la próxima vez.</p>
-        <p class="seal"><span>Su sello</span>Energía que sube sin prisa, una sonrisa que se contagia desde la cabina y una pista que, cuando acaba, pide otra.</p>
+        <p class="lede">Detrás de cada sueño hay una historia que merece ser contada.</p>
+        <p>Nacida en Valencia, Lau Minez es una DJ y productora española que ha encontrado en la música electrónica mucho más que una pasión: una forma de expresarse, de conectar y de dar sentido a aquello que siempre la ha movido.</p>
+        <p>Creciendo en un entorno familiar vinculado a la música, desarrolló desde muy joven una sensibilidad especial por los sonidos y las emociones que estos son capaces de despertar. Con el tiempo, fue la música electrónica la que terminó conquistándola, hasta convertir aquella conexión en un proyecto artístico propio.</p>
+        <p>Su trayectoria nace de la ilusión de transformar una pasión en algo real, pero también de la constancia, la dedicación y la determinación de quien sabe que los sueños no se cumplen solos.</p>
+        <div class="bio-more" id="bioMore">
+        <p>Desde sus primeros pasos detrás de los platos, Lau ha ido construyendo su camino dentro de la escena electrónica, llevando su música a cabinas como Barraca, EDEN (Ibiza), Marina Beach Club, Tulum, ROOM o Miniclub, además de formar parte de eventos como DONA Festival y de la fiesta POINTS, donde es DJ residente. Ha compartido cabina con artistas de la talla de Melanie Ribbe, Cristian Varela, Gustavo Dominguez, Tony Guerra o Vida Loca, entre otros.</p>
+        <p>Su identidad musical se mueve entre el house, el tech house, con una marcada predilección por los bajos contundentes, los ritmos cargados de groove y las vocales que despiertan emociones. Una combinación de fuerza, frescura y personalidad en la que también encuentran su lugar las influencias del house clásico y esos sonidos capaces de despertar cierta nostalgia.</p>
+        <p>Para Lau, cada sesión es una oportunidad de crear una conexión auténtica con el público. No se trata únicamente de seleccionar música, sino de interpretar la energía de la pista, construir momentos y conseguir que, durante un instante, todos compartan una misma emoción.</p>
+        <p>Su inquietud artística también la ha llevado a dar el salto a la producción musical, iniciando esta nueva etapa con «WTF», su primer lanzamiento junto a Javi Palmero bajo el sello Points Records. Un paso más en la búsqueda de un sonido propio que continúa desarrollando y explorando.</p>
+        <p>Lejos de conformarse con lo conseguido, Lau Minez sigue escribiendo su historia con la misma ilusión que la llevó a comenzar, convencida de que cada experiencia, cada escenario y cada nuevo reto forman parte de un camino que todavía tiene mucho por contar.</p>
+        </div>
+        <button class="bio-toggle" id="bioToggle" aria-expanded="false" aria-controls="bioMore">Leer biografía completa <span>+</span></button>
+        <p class="seal"><span>Y la suya sigue sonando</span>Porque, al final, detrás de cada artista hay una historia. Y la suya sigue sonando.</p>
       </div>
-      <figure class="portrait" data-reveal><img src="media/retrato.webp" alt="Retrato de Lau Minez"></figure>
+      <figure class="portrait-wrap" data-reveal><div class="portrait"><img src="media/retrato.webp" alt="Retrato de Lau Minez"></div><figcaption class="portrait-cap">Una identidad que se construye sin perder su esencia</figcaption></figure>
     </div>
     <div class="sig" data-reveal>
       <p class="mini">ESTA ES <span class="lime">LAU MINEZ</span>.</p>
@@ -555,41 +656,31 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   <section class="sec wrap" id="sesiones">
     <div class="head">
       <div data-reveal>
-        <p class="eyebrow"><b>02</b> En acción</p>
+        <p class="eyebrow"><b>02</b> Ella</p>
         <h2 class="h-xl">En la<br>cabina<span class="dot"></span></h2>
       </div>
       <div class="side" data-reveal>
-        <p class="lede">Points y una carpa llena hasta arriba. Toca el altavoz para escucharlos.</p>
+        <p class="lede">Presiona el altavoz y escúchalos.</p>
       </div>
     </div>
     <div class="reels" id="reels">
       <article class="reel" data-reveal>
         <video muted loop playsinline webkit-playsinline preload="metadata" poster="media/points-1.jpg" data-autoplay><source src="media/points-1.mp4" type="video/mp4"></video>
-        <div class="cap"><div><span class="ui-label">Sesión 01</span><h3>Points</h3></div>
+        <div class="cap"><div></div>
           <button class="mute" aria-label="Activar sonido de la sesión 01" aria-pressed="false"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8a5 5 0 0 1 0 8M19.5 5.5a8.5 8.5 0 0 1 0 13"/></svg></button></div>
       </article>
       <article class="reel" data-reveal>
         <video muted loop playsinline webkit-playsinline preload="metadata" poster="media/points-2.jpg" data-autoplay><source src="media/points-2.mp4" type="video/mp4"></video>
-        <div class="cap"><div><span class="ui-label">Sesión 02</span><h3>Points</h3></div>
+        <div class="cap"><div></div>
           <button class="mute" aria-label="Activar sonido de la sesión 02" aria-pressed="false"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8a5 5 0 0 1 0 8M19.5 5.5a8.5 8.5 0 0 1 0 13"/></svg></button></div>
       </article>
       <article class="reel" data-reveal>
         <video muted loop playsinline webkit-playsinline preload="metadata" poster="media/intro.jpg" data-autoplay><source src="media/intro.mp4" type="video/mp4"></video>
-        <div class="cap"><div><span class="ui-label">Sesión 03</span><h3>Con la carpa llena</h3></div>
+        <div class="cap"><div></div>
           <button class="mute" aria-label="Activar sonido de la sesión 03" aria-pressed="false"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8a5 5 0 0 1 0 8M19.5 5.5a8.5 8.5 0 0 1 0 13"/></svg></button></div>
       </article>
     </div>
     <div class="reel-dots" id="reelDots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
-    <aside class="reel-note" data-reveal>
-        <p>Una cabina. Una pista. Sin distracciones. Sesiones de música electrónica, luz y movimiento.</p>
-        <dl class="specs">
-          <dt>Clubs</dt><dd>Points · Room</dd>
-          <dt>Festivales</dt><dd>Medusa · Dona</dd>
-          <dt>Playa</dt><dd>La Marserena</dd>
-          <dt>Showcase</dt><dd>Barraca</dd>
-        </dl>
-        <a class="btn" href="#contacto">Contratar <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a>
-    </aside>
   </section>
 
   <!-- 03 CARTELES -->
@@ -597,25 +688,35 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
     <div class="head">
       <div data-reveal>
         <p class="eyebrow"><b>03</b> Carteles</p>
-        <h2 class="h-xl">Noches que<br>no se olvidan<span class="dot"></span></h2>
+        <h2 class="h-xl">Eventos<br>destacados<span class="dot"></span></h2>
       </div>
       <div class="side" data-reveal>
-        <p class="lede">Algunas de las fechas que ha pinchado, en sus carteles originales. Arrastra para pasar de uno a otro.</p>
+        <p class="lede">Algunas fechas y eventos en los que ha participado.</p>
       </div>
     </div>
     <div class="cf" id="cf">
       <div class="cf-ghost" aria-hidden="true"><span>CARTELES · NOCHES · CARTELES · NOCHES · </span><span>CARTELES · NOCHES · CARTELES · NOCHES · </span></div>
       <div class="cf-stage" id="cfStage" tabindex="0" aria-roledescription="carrusel" aria-label="Carteles. Usa las flechas para cambiar.">
-        <figure class="cf-card"><img src="media/cartel-black-rose.webp" alt="Cartel de The Black Rose by Marien Baker y Lau Minez en La Marserena" draggable="false"><span class="glare"></span></figure>
-        <figure class="cf-card"><img src="media/cartel-points-barraca.webp" alt="Cartel de Points Showcase en Barraca, 24 de enero de 2026" draggable="false"><span class="glare"></span></figure>
-        <figure class="cf-card"><img src="media/cartel-medusa.webp" alt="Cartel de Lau Minez en el escenario Apsaras de Medusa Festival 2026" draggable="false"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-miniclub.webp" alt="Cartel de Miniclub con Bernna Prietto, Alexein, Lau Minez y Carlos Martinez" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-medusa.webp" alt="Cartel de Lau Minez en el escenario Church Club de Medusa Festival 2026" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-port-electronic.webp" alt="Cartel de Port Electronic 2026 en Puerto de Sagunto" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-black-rose.webp" alt="Cartel de The Black Rose by Marien Baker y Lau Minez en La Marserena" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-dona-abril.webp" alt="Cartel de Dona Festival, tardeo Dona Electronic del 18 de abril" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-room-carloh.webp" alt="Cartel de Room The Only Club con Carloh, Sebas Puerta y Lau Minez" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-points-barraca.webp" alt="Cartel de Points Showcase en Barraca, 24 de enero de 2026" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-tony-guerra.webp" alt="Cartel de The Next Night en Room con Tony Guerra" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-palmeres.webp" alt="Cartel de Palmeres Festival en Barraca, 8 de noviembre de 2025" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-la-quinta.webp" alt="Cartel de La Quinta en The Next Room con Abril Love y Roxy" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-dona-marzo.webp" alt="Cartel de Dona Festival con Lau Minez, 8 de marzo" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-tulum-vitoli.webp" alt="Cartel de The Next Night en Tulum con Vitrie Vitoli" draggable="false" loading="lazy"><span class="glare"></span></figure>
+        <figure class="cf-card"><img src="media/cartel-tulum-varela.webp" alt="Cartel de The Next Night Noche de Reyes en Tulum con Cristian Varela" draggable="false" loading="lazy"><span class="glare"></span></figure>
       </div>
       <div class="cf-info">
         <div class="cf-txt" id="cfTxt" aria-live="polite">
-          <span class="chip">ARCHIVO · <b id="cfNum">01</b> / 03</span>
-          <h3 id="cfTitle">The Black Rose</h3>
-          <p class="meta" id="cfMeta">LA MARSERENA · DÉNIA<br>DOMINGO 06 JULIO · DESDE LAS 17:00</p>
-          <p id="cfText">Una tarde junto al puerto con Marien Baker y Lau Minez a los mandos.</p>
+          <span class="chip">ARCHIVO · <b id="cfNum">01</b> / 13</span>
+          <h3 id="cfTitle">Miniclub</h3>
+          <p class="meta" id="cfMeta">AV. BLASCO IBÁÑEZ 111 · VALENCIA<br>SÁBADO 14 NOVIEMBRE · 00:00 — 07:30</p>
+          <p id="cfText">Cartel compartido con Bernna Prietto, Alexein y Carlos Martinez.</p>
         </div>
         <div class="cf-ctrl">
           <button class="cf-btn" id="cfPrev" aria-label="Cartel anterior"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M11 6H1M5 2L1 6l4 4"/></svg></button>
@@ -632,7 +733,7 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
     <div class="head">
       <div data-reveal>
         <p class="eyebrow"><b>04</b> Premios</p>
-        <h2 class="h-xl">Reconocida<br>fuera de la<br>cabina<span class="dot"></span></h2>
+        <h2 class="h-xl">Logros y<br>reconocimiento<span class="dot"></span></h2>
       </div>
       <div class="side" data-reveal>
         <p class="lede">Gala de Premios Turismo by FOTUR: premio a Dona Festival, recogido por Lau Minez.</p>
@@ -666,12 +767,13 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   <section class="sec wrap" id="dedia">
     <div class="daywrap">
       <div class="day-txt" data-reveal>
-        <p class="eyebrow"><b>05</b> De día</p>
-        <h2 class="h-xl">También<br>al sol<span class="dot"></span></h2>
-        <p class="lede">Dona Festival en València y fiestas al aire libre: sol, humo y la gente bailando delante de la cabina.</p>
+        <p class="eyebrow"><b>05</b> Daytime vibes</p>
+        <h2 class="h-xl">El ritmo no<br>entiende de<br>horarios<span class="dot"></span></h2>
+        <p class="lede">Cada escenario tiene su propia esencia y cada público una energía diferente.</p>
+        <p class="day-more">A través de estas imágenes, Lau Minez comparte algunos de los momentos que han formado parte de sus sesiones de día, reflejando su manera de vivir y transmitir la música.</p>
         <div class="deck-ctrl">
           <button class="cf-btn" id="dkPrev" aria-label="Carta anterior"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M11 6H1M5 2L1 6l4 4"/></svg></button>
-          <span class="dk-count"><b id="dkNum">01</b> / 04</span>
+          <span class="dk-count"><b id="dkNum">01</b> / 06</span>
           <button class="cf-btn" id="dkNext" aria-label="Carta siguiente"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></button>
         </div>
         <p class="swipe-hint"><span>←</span> Desliza la carta <span>→</span></p>
@@ -679,29 +781,13 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
       <div class="deck" id="deck" aria-label="Fotos y vídeo de día. Desliza para pasar.">
         <article class="dk reel">
           <video muted loop playsinline webkit-playsinline preload="metadata" poster="media/hero.jpg" data-autoplay><source src="media/hero.mp4" type="video/mp4"></video>
-          <div class="cap"><div><span class="ui-label">En vídeo</span><h3>Al aire libre</h3></div><button class="mute" aria-label="Activar sonido del vídeo al aire libre" aria-pressed="false"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8a5 5 0 0 1 0 8M19.5 5.5a8.5 8.5 0 0 1 0 13"/></svg></button></div>
+          <div class="cap"><div></div><button class="mute" aria-label="Activar sonido del vídeo al aire libre" aria-pressed="false"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8a5 5 0 0 1 0 8M19.5 5.5a8.5 8.5 0 0 1 0 13"/></svg></button></div>
         </article>
-        <figure class="dk" data-src="media/dia-cabina.webp" data-cap="En la cabina, de día"><img src="media/dia-cabina.webp" alt="Lau Minez sonriendo en la cabina con gafas de sol" draggable="false"><figcaption class="cap"><span class="num">EN LA CABINA</span></figcaption></figure>
-        <figure class="dk" data-src="media/dia-escenario.webp" data-cap="Escenario València"><img src="media/dia-escenario.webp" alt="Público y humo frente al escenario de València con Lau Minez en la cabina" draggable="false"><figcaption class="cap"><span class="num">VALÈNCIA</span></figcaption></figure>
-        <figure class="dk" data-src="media/dia-mano.webp" data-cap="Mano arriba"><img src="media/dia-mano.webp" alt="Lau Minez con la mano en alto delante de la pantalla del escenario" draggable="false"><figcaption class="cap"><span class="num">MANO ARRIBA</span></figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 ESTUDIO -->
-  <section class="sec wrap" id="estudio">
-    <div class="studio">
-      <div class="studio-txt" data-reveal>
-        <div><p class="eyebrow"><b>06</b> Estudio</p>
-        <h2 class="h-xl">Donde<br>empieza todo<span class="dot"></span></h2></div>
-        <div><p class="lede">Antes de la cabina, el estudio: auriculares, pantalla y horas preparando lo que sonará después.</p>
-        <p class="swipe-hint"><span>←</span> Arrastra la línea verde <span>→</span></p></div>
-      </div>
-      <div class="cmp" id="cmp" data-reveal role="slider" tabindex="0" aria-label="Compara las dos fotos del estudio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-        <img src="media/estudio-1.webp" alt="Lau Minez concentrada en el estudio frente a la pantalla" draggable="false">
-        <div class="cmp-b"><img src="media/estudio-2.webp" alt="Lau Minez en el estudio haciendo el gesto de la paz" draggable="false"></div>
-        <span class="cmp-tag l">MODO CONCENTRADA</span><span class="cmp-tag r">LISTA PARA SALIR</span>
-        <div class="cmp-line"><span class="cmp-knob"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <figure class="dk" data-src="media/dia-dona.webp" data-cap="Día de la Dona"><img src="media/dia-dona.webp" alt="Lau Minez de espaldas pinchando frente al público del Día de la Dona" draggable="false"></figure>
+        <figure class="dk" data-src="media/dia-gafas.webp" data-cap="En la cabina"><img src="media/dia-gafas.webp" alt="Lau Minez sonriendo en la cabina con gafas de sol" draggable="false"></figure>
+        <figure class="dk" data-src="media/dia-marina.webp" data-cap="Marina Beach Club"><img src="media/dia-marina.webp" alt="Lau Minez en la cabina de Marina Beach Club al atardecer" draggable="false"></figure>
+        <figure class="dk" data-src="media/dia-humo.webp" data-cap="Humo y manos arriba"><img src="media/dia-humo.webp" alt="Público con humo frente al escenario de Lau Minez" draggable="false"></figure>
+        <figure class="dk" data-src="media/dia-chaqueta.webp" data-cap="Al sol"><img src="media/dia-chaqueta.webp" alt="Lau Minez pinchando al sol con chaqueta blanca" draggable="false"></figure>
       </div>
     </div>
   </section>
@@ -710,15 +796,15 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   <section class="sec wrap" id="galeria">
     <div class="head">
       <div data-reveal>
-        <p class="eyebrow"><b>07</b> Archivo visual</p>
-        <h2 class="h-xl">A través de<br>sus ojos<span class="dot"></span></h2>
+        <p class="eyebrow"><b>06</b> Galería</p>
+        <h2 class="h-xl">Imágenes y<br>momentos<span class="dot"></span></h2>
       </div>
       <div class="side" data-reveal>
-        <p class="lede">Las luces. El ruido. Las caras. Los momentos entre momentos.</p>
+        <p class="lede">Lo que las palabras no cuentan.</p>
       </div>
     </div>
     <div class="gal" id="gal" data-reveal aria-label="Galería de fotos. Arrastra para moverla.">
-      <div class="gal-track" id="galTrack"><figure class="gi" data-src="media/cabina-dia.webp" data-cap="Al sol"><img src="media/cabina-dia.webp" alt="Lau Minez pinchando de día con gafas de sol" draggable="false"><figcaption><b>01</b> AL SOL</figcaption></figure><figure class="gi" data-src="media/cabina-azul.webp" data-cap="A oscuras"><img src="media/cabina-azul.webp" alt="Lau Minez en la cabina con luz azul" draggable="false"><figcaption><b>02</b> A OSCURAS</figcaption></figure><figure class="gi" data-src="media/cabina-room.webp" data-cap="Room · The Only Club"><img src="media/cabina-room.webp" alt="Lau Minez pinchando en Room The Only Club" draggable="false"><figcaption><b>03</b> ROOM</figcaption></figure><figure class="gi" data-src="media/cinturon.webp" data-cap="Campeona"><img src="media/cinturon.webp" alt="Lau Minez levantando un cinturón de campeona en la cabina" draggable="false"><figcaption><b>04</b> CAMPEONA</figcaption></figure><figure class="gi" data-src="media/cabina-pista.webp" data-cap="Manos arriba"><img src="media/cabina-pista.webp" alt="Lau Minez bailando en la cabina con la gente detrás" draggable="false"><figcaption><b>05</b> MANOS ARRIBA</figcaption></figure><figure class="gi" data-src="media/cabina-points.webp" data-cap="Points"><img src="media/cabina-points.webp" alt="Lau Minez saludando desde la cabina de Points" draggable="false"><figcaption><b>06</b> POINTS</figcaption></figure><figure class="gi" data-src="media/fbd.webp" data-cap="FBD · Fourvenues"><img src="media/fbd.webp" alt="Lau Minez en el photocall de FBD" draggable="false"><figcaption><b>07</b> FBD</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/cabina-dia.webp" data-cap="Al sol"><img src="media/cabina-dia.webp" alt="Lau Minez pinchando de día con gafas de sol" draggable="false"><figcaption><b>01</b> AL SOL</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/cabina-azul.webp" data-cap="A oscuras"><img src="media/cabina-azul.webp" alt="Lau Minez en la cabina con luz azul" draggable="false"><figcaption><b>02</b> A OSCURAS</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/cabina-room.webp" data-cap="Room · The Only Club"><img src="media/cabina-room.webp" alt="Lau Minez pinchando en Room The Only Club" draggable="false"><figcaption><b>03</b> ROOM</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/cinturon.webp" data-cap="Campeona"><img src="media/cinturon.webp" alt="Lau Minez levantando un cinturón de campeona en la cabina" draggable="false"><figcaption><b>04</b> CAMPEONA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/cabina-pista.webp" data-cap="Manos arriba"><img src="media/cabina-pista.webp" alt="Lau Minez bailando en la cabina con la gente detrás" draggable="false"><figcaption><b>05</b> MANOS ARRIBA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/cabina-points.webp" data-cap="Points"><img src="media/cabina-points.webp" alt="Lau Minez saludando desde la cabina de Points" draggable="false"><figcaption><b>06</b> POINTS</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/fbd.webp" data-cap="FBD · Fourvenues"><img src="media/fbd.webp" alt="Lau Minez en el photocall de FBD" draggable="false"><figcaption><b>07</b> FBD</figcaption></figure></div>
+      <div class="gal-track" id="galTrack"><figure class="gi" data-src="media/noche-pista.webp" data-cap="Manos arriba"><img src="media/noche-pista.webp" alt="Lau Minez con los brazos en alto en la cabina, con el público delante" draggable="false"><figcaption><b>01</b> MANOS ARRIBA</figcaption></figure><figure class="gi" data-src="media/dia-gafas.webp" data-cap="Al sol"><img src="media/dia-gafas.webp" alt="Lau Minez sonriendo en la cabina con gafas de sol" draggable="false"><figcaption><b>02</b> AL SOL</figcaption></figure><figure class="gi" data-src="media/noche-points.webp" data-cap="Points"><img src="media/noche-points.webp" alt="Lau Minez pinchando bajo el letrero de Points" draggable="false"><figcaption><b>03</b> POINTS</figcaption></figure><figure class="gi" data-src="media/noche-room.webp" data-cap="Room"><img src="media/noche-room.webp" alt="Lau Minez pinchando en Room The Only Club" draggable="false"><figcaption><b>04</b> ROOM</figcaption></figure><figure class="gi" data-src="media/dia-marina.webp" data-cap="Marina"><img src="media/dia-marina.webp" alt="Lau Minez en Marina Beach Club al atardecer" draggable="false"><figcaption><b>05</b> MARINA</figcaption></figure><figure class="gi" data-src="media/noche-caballo.webp" data-cap="Backstage"><img src="media/noche-caballo.webp" alt="Lau Minez posando junto a un caballo de feria en el club" draggable="false"><figcaption><b>06</b> BACKSTAGE</figcaption></figure><figure class="gi" data-src="media/dia-dona.webp" data-cap="Día de la Dona"><img src="media/dia-dona.webp" alt="Vista desde la cabina del Día de la Dona" draggable="false"><figcaption><b>07</b> DÍA DE LA DONA</figcaption></figure><figure class="gi" data-src="media/noche-valencia.webp" data-cap="València"><img src="media/noche-valencia.webp" alt="Lau Minez de noche en la Ciudad de las Artes y las Ciencias" draggable="false"><figcaption><b>08</b> VALÈNCIA</figcaption></figure><figure class="gi" data-src="media/dia-humo.webp" data-cap="Dona Festival"><img src="media/dia-humo.webp" alt="Humo y público frente al escenario" draggable="false"><figcaption><b>09</b> DONA FESTIVAL</figcaption></figure><figure class="gi" data-src="media/dia-chaqueta.webp" data-cap="De día"><img src="media/dia-chaqueta.webp" alt="Lau Minez pinchando al sol" draggable="false"><figcaption><b>10</b> DE DÍA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-pista.webp" data-cap="Manos arriba"><img src="media/noche-pista.webp" alt="Lau Minez con los brazos en alto en la cabina, con el público delante" draggable="false"><figcaption><b>01</b> MANOS ARRIBA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-gafas.webp" data-cap="Al sol"><img src="media/dia-gafas.webp" alt="Lau Minez sonriendo en la cabina con gafas de sol" draggable="false"><figcaption><b>02</b> AL SOL</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-points.webp" data-cap="Points"><img src="media/noche-points.webp" alt="Lau Minez pinchando bajo el letrero de Points" draggable="false"><figcaption><b>03</b> POINTS</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-room.webp" data-cap="Room"><img src="media/noche-room.webp" alt="Lau Minez pinchando en Room The Only Club" draggable="false"><figcaption><b>04</b> ROOM</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-marina.webp" data-cap="Marina"><img src="media/dia-marina.webp" alt="Lau Minez en Marina Beach Club al atardecer" draggable="false"><figcaption><b>05</b> MARINA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-caballo.webp" data-cap="Backstage"><img src="media/noche-caballo.webp" alt="Lau Minez posando junto a un caballo de feria en el club" draggable="false"><figcaption><b>06</b> BACKSTAGE</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-dona.webp" data-cap="Día de la Dona"><img src="media/dia-dona.webp" alt="Vista desde la cabina del Día de la Dona" draggable="false"><figcaption><b>07</b> DÍA DE LA DONA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/noche-valencia.webp" data-cap="València"><img src="media/noche-valencia.webp" alt="Lau Minez de noche en la Ciudad de las Artes y las Ciencias" draggable="false"><figcaption><b>08</b> VALÈNCIA</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-humo.webp" data-cap="Dona Festival"><img src="media/dia-humo.webp" alt="Humo y público frente al escenario" draggable="false"><figcaption><b>09</b> DONA FESTIVAL</figcaption></figure><figure class="gi" aria-hidden="true" data-src="media/dia-chaqueta.webp" data-cap="De día"><img src="media/dia-chaqueta.webp" alt="Lau Minez pinchando al sol" draggable="false"><figcaption><b>10</b> DE DÍA</figcaption></figure></div>
     </div>
     <p class="swipe-hint wrap-hint"><span>←</span> Arrastra la galería o toca una foto <span>→</span></p>
   </section>
@@ -729,94 +815,103 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
     <div class="wrap">
       <div class="about-grid">
         <div data-reveal>
-          <p class="eyebrow"><b>08</b> Sobre ella</p>
+          <p class="eyebrow"><b>07</b> Sobre ella</p>
           <h2 class="h-xl">Esta es<br>Lau Minez<span class="dot"></span></h2>
-          <p class="lede">De la terraza al sol al club a oscuras. Allí donde pincha, la pista se llena y nadie mira el reloj.</p>
+          <p class="lede">Una artista que ha hecho de la música electrónica su forma de expresión, construyendo una trayectoria marcada por la pasión, la constancia y una identidad musical en continua evolución.</p>
         </div>
-        <p class="rules" data-reveal>SIN GUION.<br>SIN RUTINA.<br>SIN DORMIR.</p>
+        <p class="rules" data-reveal>SU MÚSICA.<br>SU IDENTIDAD.<br>SU CAMINO.</p>
       </div>
 
       <div class="pitch" data-reveal>
-        <p class="pitch-lead">Lau no llega con una sesión cerrada. Llega con <em>oído</em>: mira a la gente, prueba, sube cuando toca y deja respirar a la pista cuando hace falta. El resultado es una noche que va a más y un público que se queda hasta el final.</p>
-        <p class="pitch-sub">Ha sonado en carteles junto a Melanie Ribbe y Marien Baker, en Barraca, en el escenario Apsaras de Medusa Festival y en Dona Festival, reconocido en la Gala de Premios Turismo by FOTUR. Sabe lo que pide un club lleno y lo que pide un festival a pleno sol.</p>
+        <p class="pitch-lead">Su versatilidad le permite desenvolverse en diferentes escenarios, desde clubs y festivales hasta eventos al aire libre, adaptando cada sesión al ambiente y a la energía del público sin perder su esencia. <em>Cada sesión es diferente, pero todas llevan algo de ella.</em></p>
       </div>
 
       <div class="why" data-reveal>
-        <article><b>01</b><h3>Lee la pista</h3><p>Construye la sesión en directo según la gente que tiene delante. Nada de piloto automático.</p></article>
-        <article><b>02</b><h3>Club y festival</h3><p>Igual de cómoda a oscuras a las 4 de la mañana que en un escenario al aire libre a las 6 de la tarde.</p></article>
-        <article><b>03</b><h3>Energía que contagia</h3><p>Baila, sonríe y conecta desde la cabina. La fiesta se ve antes de oírse.</p></article>
-        <article><b>04</b><h3>Fácil de trabajar</h3><p>Trato cercano y profesional, de la primera llamada al último tema.</p></article>
+        <article><b>01</b><h3>Trayectoria artística</h3><p>Su recorrido por diferentes espacios de la escena electrónica le ha permitido adquirir experiencia, ampliar su visión musical y continuar desarrollándose como artista.</p></article>
+        <article><b>02</b><h3>Criterio musical</h3><p>La selección de cada tema es una parte fundamental de su trabajo. Lau presta especial atención a la calidad de sus mezclas, la coherencia musical y los detalles que dan forma a cada sesión.</p></article>
+        <article><b>03</b><h3>Dedicación y constancia</h3><p>Su implicación con la música va más allá de las actuaciones. La formación continua, la preparación y el trabajo diario son pilares fundamentales en su desarrollo profesional.</p></article>
+        <article><b>04</b><h3>Nuevos proyectos</h3><p>Abierta a nuevas propuestas, colaboraciones y oportunidades que le permitan seguir ampliando su recorrido dentro de la escena electrónica.</p></article>
       </div>
 
       <div class="events" data-reveal>
-        <span class="ui-label">Para tu evento</span>
-        <ul><li>Clubs y salas</li><li>Festivales y open air</li><li>Terrazas y beach clubs</li><li>Eventos privados y de marca</li></ul>
+        <p class="ev-title">Disponible <span class="lime">para.</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 20V10M9 20V6M14 20v-8M19 20V4M2 20h20"/></svg>Clubs y salas</li>
+          <li><svg viewBox="0 0 24 24"><path d="M3 8l9-4 9 4M5 9v11M19 9v11M3 20h18M9 20v-5h6v5"/></svg>Festivales</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 3v3M4.6 6.6l2 2M3 13h3M18 13h3M17.4 8.6l2-2M7 13a5 5 0 0 1 10 0M2 19c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/></svg>Terrazas y beach club</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M12 20c0-3.3 2-6 4-6s6 2.7 6 6"/></svg>Eventos privados y colaboraciones</li>
+        </ul>
       </div>
 
-      <div class="stats" data-reveal>
-        <div class="stat"><b>FOTUR</b><span>Premio Dona Festival</span></div>
-        <div class="stat"><b>MEDUSA</b><span>Escenario Apsaras 2026</span></div>
-        <div class="stat"><b>BARRACA</b><span>Points Showcase</span></div>
-      </div>
 
       <div class="book" data-reveal>
         <div>
-          <h3>¿Tienes fecha?<br><span class="lime">Hablemos.</span></h3>
-          <p>Escríbele con el día, la ciudad y el tipo de evento, y te responde con disponibilidad y propuesta.</p>
+          <span class="ui-label lime">Booking &amp; colaboraciones</span>
+          <h3>Trabajemos<br><span class="lime">juntos.</span></h3>
         </div>
-        <a class="btn" href="#contacto">Reservar fecha <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a>
+        <div class="book-r">
+          <p>Para contrataciones, eventos y propuestas profesionales, contacta con Lau Minez.</p>
+          <a class="btn" href="mailto:bookings@lauminez.com">Contacto profesional <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 07 CREDO -->
+  <!-- FINAL -->
   <section class="creed">
-    <div class="bg"><img src="media/cabina-room.webp" alt=""></div>
+    <div class="bg"><img src="media/noche-room.webp" alt=""></div>
     <div class="wrap" data-reveal>
-      <p class="eyebrow"><b>09</b> El credo</p>
-      <h2 class="h-xl">La pista<br>es de todos<span class="dot"></span></h2>
+      <span class="end-bar"></span>
+      <p class="end-kick">LAU MINEZ<span class="lime">.</span></p>
+      <h2 class="end-h">El siguiente <span class="lime">capítulo</span><br>está por escribir<span class="lime">.</span></h2>
+      <p class="end-sub">Música, nuevos proyectos y escenarios por descubrir.</p>
       <div class="btns">
-        <a class="btn" href="#contacto">Contratar <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a>
-        <a class="btn btn-gray" href="#sesiones">Ver sesiones <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a>
+        <a class="btn" href="#sesiones">Escuchar sesiones <span class="ar"><svg viewBox="0 0 12 12"><path d="M4 2.5v7l5.5-3.5z" fill="currentColor" stroke="none"/></svg></span></a>
+        <a class="btn btn-line" href="#top">Explorar la web</a>
       </div>
     </div>
   </section>
 </main>
 
 <footer id="contacto">
-  <div class="fmarq" aria-hidden="true">
-    <span>Noche</span><span>Cultura</span><span>Música</span><span>Movimiento</span><span>Noche</span><span>Cultura</span><span>Música</span><span>Movimiento</span>
-    <span>Noche</span><span>Cultura</span><span>Música</span><span>Movimiento</span><span>Noche</span><span>Cultura</span><span>Música</span><span>Movimiento</span>
-  </div>
-  <div class="wrap fgrid">
-    <div>
-      <h4>Navegación</h4>
-      <ul><li><a href="#sesiones">Sesiones</a></li><li><a href="#carteles">Carteles</a></li><li><a href="#premios">Premios</a></li><li><a href="#galeria">Galería</a></li><li><a href="#sobre">Sobre</a></li></ul>
+  <div class="wrap fcols">
+    <div class="fbrand">
+      <p class="fb-name">LAU MINEZ</p>
+      <p class="fb-sub">DJ &amp; PRODUCTORA</p>
+      <span class="fb-bar"></span>
     </div>
-    <div>
+    <div class="fcol">
+      <h4>Navegación</h4>
+      <ul class="fnav"><li><a href="#sesiones">Sesiones</a></li><li><a href="#carteles">Carteles</a></li><li><a href="#premios">Premios</a></li><li><a href="#dedia">Daytime</a></li><li><a href="#galeria">Galería</a></li><li><a href="#sobre">Sobre Lau</a></li></ul>
+    </div>
+    <div class="fcol">
       <h4>Booking</h4>
-      <ul class="soc">
-        <li><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg>Instagram</li>
-        <li><svg viewBox="0 0 24 24"><path d="M3 15v3M6 12v6M9 10v8M12 8v10M15 6v12h4a3 3 0 0 0 0-6 5 5 0 0 0-4-6"/></svg>SoundCloud</li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7 9.5c3.5-1 7-.6 10 1M7.5 12.5c3-.8 6-.4 8.5.9M8 15.3c2.5-.6 4.8-.3 6.8.7"/></svg>Spotify</li>
-        <li><small>Fechas y booking por mensaje directo</small></li>
+      <ul class="fsoc">
+        <li><a href="https://www.instagram.com/lauminez" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg>Instagram</a></li>
+        <li><a href="https://on.soundcloud.com/g50axoo6XOU11zjy5V" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3 15v3M6 12v6M9 10v8M12 8v10M15 6v12h4a3 3 0 0 0 0-6 5 5 0 0 0-4-6"/></svg>SoundCloud</a></li>
+        <li><a href="https://open.spotify.com/artist/6DciToYojMK1AT4Q3zkI7J" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7 9.5c3.5-1 7-.6 10 1M7.5 12.5c3-.8 6-.4 8.5.9M8 15.3c2.5-.6 4.8-.3 6.8.7"/></svg>Spotify</a></li>
+        <li><span class="soon"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg>YouTube <small>Próximamente</small></span></li>
+        <li><a href="mailto:bookings@lauminez.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>bookings@lauminez.com</a></li>
       </ul>
     </div>
-    <div class="loc">
-      <h4>Dónde</h4>
-      <p>Pinchando en</p>
-      <div class="places">DÉNIA · CULLERA<br>BARRACA · VALÈNCIA<br>COMUNITAT VALENCIANA</div>
+    <div class="fcol">
+      <h4>Sobre Lau</h4>
+      <p class="fabout">Biografía, trayectoria y el proyecto artístico de Lau Minez.</p>
+      <a class="fmore" href="#sobre">Leer su historia <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a>
+      <span class="fb-bar"></span>
     </div>
   </div>
-  <div class="fbig">
-    <div class="ghost" aria-hidden="true"><span>LAU MINEZ</span><span>LAU MINEZ</span><span>LAU MINEZ</span><span>LAU MINEZ</span></div>
-    <div class="ticket">
-      <div class="t1"><b>LAU MINEZ</b><i>PASE · CABINA</i><span>VÁLIDO DE NOCHE</span></div>
-      <h5>Nos vemos<br>en la pista<em>.</em></h5>
-      <div class="t3"><span>COMUNITAT VALENCIANA</span><span>NOCHE / 001</span><span>CORTA AQUÍ ✂</span></div>
+  <section class="fend">
+    <div class="bg"><img src="media/noche-points.webp" alt=""></div>
+    <div class="fend-ghost" aria-hidden="true">LAU MINEZ</div>
+    <span class="fend-dot" aria-hidden="true"></span>
+    <div class="fend-box">
+      <p class="fe-name"><i></i>LAU MINEZ<i></i></p>
+      <h5>Nos vemos<br><span class="lime">en la pista.</span></h5>
+      <p class="fe-meta"><span>DJ &amp; PRODUCTORA</span><b></b><span>VALENCIA, ESPAÑA</span></p>
     </div>
-  </div>
-  <div class="wrap fbar"><span>Hecho de noche.</span><span>© 2026 Lau Minez</span></div>
+    <p class="fend-copy">© 2026 LAU MINEZ. TODOS LOS DERECHOS RESERVADOS.</p>
+  </section>
 </footer>
 
 <div class="cur" id="cur" aria-hidden="true"><div class="orbit"><span></span></div></div>
@@ -977,14 +1072,29 @@ footer{position:relative;background:var(--bg);overflow:hidden;padding-bottom:max
   lb.addEventListener('click', e => { if (e.target === lb) close(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
 
+
+  // bio: leer más
+  (() => { const b = document.getElementById('bioToggle'); if (!b) return;
+    b.addEventListener('click', () => { const bio = b.closest('.bio'); const o = bio.classList.toggle('open');
+      b.setAttribute('aria-expanded', o); b.firstChild.nodeValue = o ? 'Leer menos ' : 'Leer biografía completa '; }); })();
   // 03 coverflow
   (() => {
     const stage = document.getElementById('cfStage'); if (!stage) return;
     const cards = [...stage.querySelectorAll('.cf-card')], n = cards.length;
     const data = [
+      {t:'Miniclub', m:'AV. BLASCO IBÁÑEZ 111 · VALENCIA<br>SÁBADO 14 NOVIEMBRE · 00:00 — 07:30', p:'Cartel compartido con Bernna Prietto, Alexein y Carlos Martinez.', cap:'Miniclub · 14 noviembre'},
+      {t:'Medusa Festival', m:'ESCENARIO CHURCH CLUB · PLAYA DE CULLERA<br>13 — 17 AGOSTO 2026', p:'Su nombre en el cartel del escenario Church Club, frente al mar.', cap:'Medusa Festival 2026 · Church Club'},
+      {t:'Port Electronic', m:'PUERTO DE SAGUNTO · VALENCIA<br>SÁBADO 6 JUNIO 2026', p:'Del puerto a la pista, junto a Fran Hernández, Matías Sundblad y Javi Palmero.', cap:'Port Electronic 2026'},
       {t:'The Black Rose', m:'LA MARSERENA · DÉNIA<br>DOMINGO 06 JULIO · DESDE LAS 17:00', p:'Una tarde junto al puerto con Marien Baker y Lau Minez a los mandos.', cap:'The Black Rose · La Marserena'},
+      {t:'Dona Festival', m:'PARQUE CENTRAL · VALENCIA<br>18 ABRIL · TARDEO DONA ELECTRONIC', p:'Un cartel de mujeres DJs y artistas en el Parque Central.', cap:'Dona Festival · 18 abril'},
+      {t:'Room · Carloh', m:'ROOM THE ONLY CLUB · VALENCIA<br>SÁBADO 28 FEBRERO', p:'Con Carloh y Sebas Puerta en Room.', cap:'Room · Carloh'},
       {t:'Points Showcase', m:'BARRACA · MAINROOM<br>24 ENERO 2026', p:'Mainroom con Melanie Ribbe, Sansixto, Javi Palmero, Franco y Lau Minez.', cap:'Points Showcase · Barraca'},
-      {t:'Medusa Festival', m:'ESCENARIO APSARAS · PLAYA DE CULLERA<br>13 — 17 AGOSTO 2026', p:'Su nombre en el cartel del escenario Apsaras, frente al mar.', cap:'Medusa Festival 2026 · Apsaras'}
+      {t:'Tony Guerra', m:'THE NEXT NIGHT · ROOM · VALENCIA<br>SÁBADO 13 DICIEMBRE', p:'Cabina compartida con Tony Guerra, Benji Cruz, Sebas Puerta y Shaky.', cap:'The Next Night · Tony Guerra'},
+      {t:'Palmeres Festival', m:'BARRACA · TERRAZA<br>08.11.25', p:'En la terraza de Barraca junto a Franco.', cap:'Palmeres Festival · Barraca'},
+      {t:'La Quinta', m:'THE NEXT ROOM · VALENCIA<br>SÁBADO 18 OCTUBRE', p:'Con Abril Love, Roxy, Sebas Puerta y Andy Alexander.', cap:'La Quinta · The Next Room'},
+      {t:'Dona Festival', m:'PARQUE CENTRAL · VALENCIA<br>08 MARZO · TARDEO FESTIVALERO', p:'Su nombre como protagonista del tardeo festivalero de Dona.', cap:'Dona Festival · 8 marzo'},
+      {t:'Vitrie Vitoli', m:'THE NEXT NIGHT · TULUM · VALENCIA<br>SÁBADO 8 MARZO', p:'Con Vitrie Vitoli, Oliver, Benji Cruz, Franco y Shaky.', cap:'Tulum · Vitrie Vitoli'},
+      {t:'Cristian Varela', m:'THE NEXT NIGHT · TULUM<br>NOCHE DE REYES · 5 ENERO', p:'Noche de Reyes compartiendo cartel con Cristian Varela.', cap:'Tulum · Cristian Varela'}
     ];
     const txt = document.getElementById('cfTxt'), num = document.getElementById('cfNum'), ti = document.getElementById('cfTitle'),
           me = document.getElementById('cfMeta'), pp = document.getElementById('cfText'), bar = document.getElementById('cfBar');
