@@ -105,7 +105,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .marq{overflow:hidden;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0 8px}
 .marq .trk{display:flex;width:max-content;animation:mq 28s linear infinite}
 .marq span{font-family:var(--ui);font-weight:700;font-size:clamp(22px,2.6vw,36px);letter-spacing:-.01em;text-transform:uppercase;white-space:nowrap;padding:0 22px;display:flex;align-items:center;gap:22px}
-.marq span::before{content:"*";color:var(--lime)}
+.marq span::before{content:"";flex:none;width:.34em;height:.34em;border-radius:50%;background:var(--lime)}
 .marq span:nth-child(3n+2){color:var(--lime)}
 @keyframes mq{to{transform:translateX(-50%)}}
 
@@ -630,7 +630,7 @@ footer{border-top:2px solid var(--lime)}
   <section class="sec wrap" id="sobre">
     <p class="eyebrow" data-reveal><b>01</b> Quién es</p>
     <div class="manifesto">
-      <h2 class="h-xl" data-reveal>Cuando<br>ella sube,<br>la pista<br><span style="white-space:nowrap">responde<span class="dot"></span></span></h2>
+      <h2 class="h-xl" data-reveal>Lau Minez.<br>Identidad y<br><span style="white-space:nowrap">evolución<span class="dot"></span></span></h2>
       <div class="bio" data-reveal>
         <p class="lede">Detrás de cada sueño hay una historia que merece ser contada.</p>
         <p>Nacida en Valencia, Lau Minez es una DJ y productora española que ha encontrado en la música electrónica mucho más que una pasión: una forma de expresarse, de conectar y de dar sentido a aquello que siempre la ha movido.</p>
@@ -667,7 +667,7 @@ footer{border-top:2px solid var(--lime)}
     </div>
     <div class="reels" id="reels">
       <article class="reel" data-reveal>
-        <video muted loop playsinline webkit-playsinline preload="metadata" poster="media/sesion-room.jpg" data-autoplay><source src="media/sesion-room.mp4" type="video/mp4"></video>
+        <video muted loop playsinline webkit-playsinline preload="metadata" poster="media/sesion-room.jpg?v=2" data-autoplay><source src="media/sesion-room.mp4?v=2" type="video/mp4"></video>
         <div class="cap"><div></div>
           <button class="mute" aria-label="Activar sonido de la sesión en Room" aria-pressed="false"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8a5 5 0 0 1 0 8M19.5 5.5a8.5 8.5 0 0 1 0 13"/></svg></button></div>
       </article>
